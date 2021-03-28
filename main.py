@@ -34,10 +34,18 @@ def read_root():
 def read_item(api_key: APIKey = Depends(get_api_key)):
     results = []
     cur = db.cursor()
-    print(cur.rowcount)
-    print(cur)
     cur.execute("SELECT * FROM reservation")
     for i in cur:
         results.append(i)
-    print(results)
     return results
+
+
+@app.get("/Planets")
+def read_item(api_key: APIKey = Depends(get_api_key)):
+    results = []
+    cur = db.cursor()
+    cur.execute("SELECT * FROM planets")
+    for i in cur:
+        results.append(i)
+    return results
+
