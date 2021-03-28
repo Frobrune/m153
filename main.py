@@ -1,9 +1,10 @@
 import psycopg2
 from fastapi import FastAPI, Security, HTTPException, Depends
-from fastapi.security.api_key import APIKeyHeader
+from fastapi.security.api_key import APIKeyHeader, APIKey
+from starlette.status import HTTP_403_FORBIDDEN
 
 app = FastAPI()
-api_key_header = APIKeyHeader(name=access_token, auto_error=False)
+api_key_header = APIKeyHeader(name="access_token", auto_error=False)
 
 
 db = psycopg2.connect(
